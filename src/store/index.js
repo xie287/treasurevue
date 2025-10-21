@@ -19,6 +19,11 @@ export default createStore({
       state.gameState[location].finished = finished
       localStorage.setItem('treasureGameState', JSON.stringify(state.gameState))
     },
+    // 重置整个游戏状态的 mutation
+    RESET_GAME_STATE(state) {
+      state.gameState = {}; // 清空所有地点的进度
+      localStorage.setItem('treasureGameState', JSON.stringify(state.gameState));
+    },
     ADD_USER(state, user) {
       state.users.push(user)
       localStorage.setItem('treasureGameUsers', JSON.stringify(state.users))
@@ -58,7 +63,7 @@ export default createStore({
       }
     },
     resetGame({ commit, state }) {
-      commit('UPDATE_GAME_STATE', {})
+      commit('RESET_GAME_STATE')
       if (state.user) {
         commit('UPDATE_USER_SCORE', {
           userId: state.user.id,
