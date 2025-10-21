@@ -14,7 +14,7 @@ export default {
     const audio = ref(null)
 
     onMounted(() => {
-      audio.value = new Audio('`${import.meta.env.BASE_URL}assets/main-theme.wav')
+      audio.value = new Audio(`${import.meta.env.BASE_URL}assets/main-theme.wav`)
       audio.value.loop = true
       audio.value.volume = 0.5
       
@@ -63,3 +63,4 @@ export default {
 }
 
 </style>
+
