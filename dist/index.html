@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🏝️ 神秘宝藏探险</title>
+    <meta name="description" content="开启你的冒险之旅，发现隐藏的宝藏！">
+    <style>
+      /* 加载时的初始样式 */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      
+      #app {
+        min-height: 100vh;
+      }
+      
+      /* 加载动画 */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        color: white;
+        text-align: center;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid rgba(255,255,255,0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-bc7d3c0c.js"></script>
+    <link rel="stylesheet" href="/assets/index-1197c944.css">
+  </head>
+  <body>
+    <div id="app">
+      <!-- 加载动画 -->
+      <div class="loading-container" id="loading">
+        <div class="loading-spinner"></div>
+        <h2>🏝️ 神秘宝藏探险</h2>
+        <p>正在加载冒险世界...</p>
+      </div>
+    </div>
+    
+    
+    
+    <script>
+      // 应用加载完成后隐藏加载动画
+      window.addEventListener('load', function() {
+        setTimeout(() => {
+          const loadingElement = document.getElementById('loading');
+          if (loadingElement) {
+            loadingElement.style.opacity = '0';
+            loadingElement.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+              loadingElement.style.display = 'none';
+            }, 500);
+          }
+        }, 1000);
+      });
+      
+      // 错误处理
+      window.addEventListener('error', function(e) {
+        console.error('应用加载错误:', e.error);
+        const loadingElement = document.getElementById('loading');
+        if (loadingElement) {
+          loadingElement.innerHTML = `
+            <div style="color: #ff6b6b; text-align: center;">
+              <h2>❌ 加载失败</h2>
+              <p>请刷新页面重试</p>
+              <button onclick="window.location.reload()" style="
+                background: #ff6b6b;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 10px;
+              ">重新加载</button>
+            </div>
+          `;
+        }
+      });
+    </script>
+  </body>
+</html>
